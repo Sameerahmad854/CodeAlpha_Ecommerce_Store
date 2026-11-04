@@ -14,7 +14,10 @@ const productModal = document.querySelector("#product-modal");
 
 let products = [];
 let allProducts = [];
-let selectedCategory = "All";
+const requestedCategory = new URLSearchParams(window.location.search).get("category");
+let selectedCategory = ["Electronics", "Accessories", "Fashion"].includes(requestedCategory)
+  ? requestedCategory
+  : "All";
 let cart = [];
 try {
   const savedCart = JSON.parse(localStorage.getItem("shopnest_cart") || "[]");
